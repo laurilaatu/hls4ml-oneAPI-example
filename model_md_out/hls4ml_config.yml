@@ -1,0 +1,66 @@
+Backend: oneAPI
+ClockPeriod: 5
+HLSConfig:
+  LayerName:
+    conv1d:
+      Precision:
+        bias: auto
+        result: auto
+        weight: auto
+      Trace: false
+    conv1d_input:
+      Precision:
+        result: auto
+      Trace: false
+    conv1d_relu:
+      Precision:
+        result: auto
+      Trace: false
+    dense:
+      Precision:
+        bias: auto
+        result: auto
+        weight: auto
+      Trace: false
+    dense_linear:
+      Precision:
+        result: auto
+      Trace: false
+    gru:
+      ApplyResetGate: after
+      Direction: forward
+      Precision:
+        bias: auto
+        recurrent_bias: auto
+        recurrent_weight: auto
+        result: auto
+        weight: auto
+      Trace: false
+    gru_1:
+      ApplyResetGate: after
+      Direction: forward
+      Precision:
+        bias: auto
+        recurrent_bias: auto
+        recurrent_weight: auto
+        result: auto
+        weight: auto
+      Trace: false
+  Model:
+    BramFactor: 1000000000
+    Precision:
+      default: ac_fixed<12, 6>
+    ReuseFactor: 1
+    Strategy: Latency
+    TraceOutput: false
+IOType: io_stream
+InputData: null
+KerasModel: !keras_model 'model_bonito_stream_md_out/keras_model.keras'
+OutputDir: model_bonito_stream_md_out
+OutputPredictions: null
+Part: Agilex7
+ProjectName: myproject
+Stamp: 98e43a3a
+Version: 1.0.0
+WriterConfig:
+  WriteTar: false
