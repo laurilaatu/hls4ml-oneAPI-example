@@ -3,14 +3,8 @@
 #include <sycl/ext/intel/experimental/task_sequence.hpp>
 
 // hls-fpga-machine-learning insert weights
-#include "weights/w2.h"
-#include "weights/b2.h"
-#include "weights/w4.h"
-#include "weights/wr4.h"
-#include "weights/b4.h"
-#include "weights/br4.h"
-#include "weights/w7.h"
-#include "weights/b7.h"
+
+
 
 // The inter-task pipes need to be declared in the global scope
 // hls-fpga-machine-learning insert inter-task pipes
@@ -38,10 +32,10 @@ void Myproject::operator()() const {
 
     // hls-fpga-machine-learning insert layers
 
-    conv1d_3.async(w2, b2);
+    conv1d_3.async();
     conv1d_3_relu.async();
-    gru_3.async(w4, wr4, b4, br4);
-    dense_3.async(w7, b7);
+    gru_3.async();
+    dense_3.async();
 
     // hls-fpga-machine-learning return
 }

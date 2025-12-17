@@ -37,6 +37,12 @@ struct config2_mult : nnet::dense_config {
 };
 
 struct config2 : nnet::conv1d_config {
+
+    #include "weights/w2.h"
+    #include "weights/b2.h"
+
+    
+
     static const unsigned in_width = 5;
     static const unsigned n_chan = 1;
 
@@ -61,6 +67,8 @@ struct config2 : nnet::conv1d_config {
     typedef model_default_t accum_t;
     typedef b2_t bias_t;
     typedef w2_t weight_t;
+    static constexpr weight_t weights = w2;
+    static constexpr bias_t biases = b2;
     typedef config2_mult mult_config;
 };
 
@@ -73,6 +81,7 @@ struct relu_config3 : nnet::activ_config {
 };
 
 struct config4_x_mult : nnet::dense_config {
+   
     static const unsigned n_in = 4;
     static const unsigned n_out = 16 * 3;
 
@@ -94,6 +103,8 @@ struct config4_x_mult : nnet::dense_config {
 };
 
 struct config4_h_mult : nnet::dense_config {
+
+
     static const unsigned n_in = 16;
     static const unsigned n_out = 16 * 3;
 
@@ -131,6 +142,13 @@ struct tanh_config4_act : nnet::activ_config {
 };
 
 struct config4 : nnet::gru_config {
+
+    #include "weights/w4.h"
+    #include "weights/wr4.h"
+   
+    #include "weights/b4.h"
+    #include "weights/br4.h"
+
     static const unsigned n_in  = 4;
     static const unsigned n_out = 16;
     static const unsigned n_units = 16;
@@ -143,6 +161,11 @@ struct config4 : nnet::gru_config {
     typedef b4_t bias_t;
     typedef wr4_t recurrent_weight_t;
     typedef br4_t recurrent_bias_t;
+
+    static constexpr weight_t weights = w4;
+    static constexpr recurrent_weight_t recurrent_weights = wr4;
+    static constexpr bias_t bias = b4;
+    static constexpr recurrent_bias_t recurrent_bias = br4;
 
     typedef config4_x_mult mult_config_x;
     typedef config4_h_mult mult_config_h;
@@ -183,6 +206,11 @@ struct config7_mult : nnet::dense_config {
 };
 
 struct config7 : nnet::conv1d_config {
+
+
+    #include "weights/w7.h"
+    #include "weights/b7.h"
+
     static const unsigned in_width = 5;
     static const unsigned n_chan = 16;
 
@@ -207,6 +235,8 @@ struct config7 : nnet::conv1d_config {
     typedef model_default_t accum_t;
     typedef b7_t bias_t;
     typedef w7_t weight_t;
+    static constexpr weight_t weights = w7;
+    static constexpr bias_t biases = b7;
     typedef config7_mult mult_config;
 };
 
