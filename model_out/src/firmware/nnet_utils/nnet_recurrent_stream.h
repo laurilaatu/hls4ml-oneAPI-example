@@ -7,8 +7,7 @@
 
 namespace nnet {
 template <class data_pipe, class res_pipe, typename CONFIG_T>
-void gru_stream(typename CONFIG_T::weight_t weights, typename CONFIG_T::recurrent_weight_t recurrent_weights,
-                typename CONFIG_T::bias_t bias, typename CONFIG_T::recurrent_bias_t recurrent_bias) {
+void gru_stream() {
 
     using data_T = typename ExtractPipeType<data_pipe>::value_type;
     using res_T = typename ExtractPipeType<res_pipe>::value_type;
@@ -35,7 +34,7 @@ DataPropagation:
             x[i_pack] = data_pack[i_pack];
         }
 
-        nnet::gru_cell<data_T, h_T, CONFIG_T>(x, h, weights, recurrent_weights, bias, recurrent_bias);
+        nnet::gru_cell<data_T, h_T, CONFIG_T>(x, h, CONFIG_T::weights, CONFIG_T::recurrent_weights, CONFIG_T::bias, CONFIG_T::recurrent_bias);
 
         if (CONFIG_T::return_sequences) {
             res_T res_pack;
