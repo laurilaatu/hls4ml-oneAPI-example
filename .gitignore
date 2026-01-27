@@ -41,3 +41,4 @@
 *.dwo
 
 model_out/build/
+**/build/
